@@ -2,15 +2,12 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-// import IconButton from '@material-ui/core/IconButton'
 import Icon from '@mdi/react'
 import { mdiAccount, mdiLogoutVariant } from '@mdi/js'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLoggedUserContext } from 'src/Pages/LoggedUserContext'
-import clsx from 'clsx'
 import AuthService from 'src/Services/auth.service'
-import { Button, IconButton } from '@material-ui/core'
+import { IconButton } from '@material-ui/core'
 
 const NavBar = () => {
   const classes = useStyles()
@@ -26,7 +23,7 @@ const NavBar = () => {
 
   return (
     <div className={classes.root}>
-      <AppBar position="absolute" className={classes.appBar}>
+      <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
           <Typography variant="h6" className={classes.title} component={Link} to="/">
             Goxo
@@ -36,7 +33,7 @@ const NavBar = () => {
               <Link to="/profile" className={classes.linkIcon}>
                 <Icon path={mdiAccount} size={1}></Icon>
               </Link>
-              <IconButton onClick={signOut}>
+              <IconButton onClick={signOut} className={classes.linkIcon}>
                 <Icon path={mdiLogoutVariant} size={1} />
               </IconButton>
             </>
@@ -56,7 +53,8 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
       paddingRight: spacing(3),
     },
     appBar: {
-      // backgroundColor: palette.secondary.main,
+      position: 'fixed',
+      backgroundColor: palette.secondary.main + 'C0',
     },
     title: {
       flexGrow: 1,
