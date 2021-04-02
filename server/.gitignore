@@ -1,11 +1,11 @@
-# Compiled JavaScript files
-dist/
+# # Compiled JavaScript files
+# dist/
 
-# TypeScript v1 declaration files
-typings/
+# # TypeScript v1 declaration files
+# typings/
 
-# Node.js dependency directory
-node_modules/
+# # Node.js dependency directory
+# node_modules/
 
-# Misc
-.prettierrc
+# # Misc
+# .prettierrc
