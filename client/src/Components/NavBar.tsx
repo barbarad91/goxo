@@ -41,7 +41,7 @@ const NavBar = () => {
             </>
           )}
           <Typography variant="h6" className={classes.title} component={Link} to="/">
-            Wommunity
+            Goxo
           </Typography>
         </Toolbar>
       </AppBar>
@@ -80,6 +80,7 @@ const useStyles = makeStyles(({ breakpoints, mixins, palette, spacing, transitio
       ...mixins.toolbar,
     },
     appBar: {
+      backgroundColor: palette.secondary.main,
       zIndex: zIndex.drawer + 1,
       transition: transitions.create(['width', 'margin'], {
         easing: transitions.easing.sharp,
@@ -123,11 +124,6 @@ const useStyles = makeStyles(({ breakpoints, mixins, palette, spacing, transitio
       width: spacing(7),
       [breakpoints.up('sm')]: {
         width: spacing(9),
-      },
-    },
-    styledMenuItem: {
-      '&:focus': {
-        backgroundColor: palette.primary.light,
       },
     },
   })
