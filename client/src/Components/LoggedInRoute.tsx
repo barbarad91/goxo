@@ -1,5 +1,5 @@
 import { Redirect, Route, RouteComponentProps, RouteProps } from 'react-router'
-import { useLoggedUserContext } from 'src/Pages/LoggedUserContext'
+import { useLoggedUserContext } from 'src/pages/LoggedUserContext'
 
 const LoggedInRoute = ({ component: Component, ...otherProps }: RouteProps) => {
   const { user } = useLoggedUserContext()

@@ -9,7 +9,7 @@ import {
   useMemo,
   useState,
 } from 'react'
-import AuthService from 'src/Services/auth.service'
+import AuthService from 'src/services/auth.service'
 
 const LoggedUserContext = createContext<LoggedUserContextData | undefined>(undefined)
 
@@ -25,6 +25,7 @@ const UserContext: FunctionComponent = (props) => {
   const authService = useMemo(() => new AuthService(), [])
 
   const [user, setUser] = useState<User | undefined>(undefined)
+  const [loading, setLoading] = useState(true)
 
   const fetchUser = useCallback(async () => {
     try {
@@ -34,18 +35,20 @@ const UserContext: FunctionComponent = (props) => {
     } catch (error) {
       console.error(error)
     }
+    setLoading(false)
   }, [authService])
 
   useEffect(() => {
     fetchUser()
   }, [fetchUser])
 
-  return <LoggedUserContext.Provider value={{ user, setUser }}>{props.children}</LoggedUserContext.Provider>
+  return <LoggedUserContext.Provider value={{ user, setUser, loading }}>{props.children}</LoggedUserContext.Provider>
 }
 
 type LoggedUserContextData = {
   user: User | undefined
   setUser: Dispatch<SetStateAction<User | undefined>>
+  loading: boolean
 }
 
 type User = {

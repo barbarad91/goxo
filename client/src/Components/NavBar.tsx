@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography'
 import Icon from '@mdi/react'
 import { mdiAccount, mdiLogoutVariant } from '@mdi/js'
 import { Link } from 'react-router-dom'
-import { useLoggedUserContext } from 'src/Pages/LoggedUserContext'
-import AuthService from 'src/Services/auth.service'
+import { useLoggedUserContext } from 'src/pages/LoggedUserContext'
+import AuthService from '../services/auth.service'
 import { IconButton } from '@material-ui/core'
 
 const NavBar = () => {
@@ -54,7 +54,7 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
     },
     appBar: {
       position: 'fixed',
-      backgroundColor: palette.secondary.main + 'C0',
+      backgroundColor: palette.secondary.main,
     },
     title: {
       flexGrow: 1,

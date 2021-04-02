@@ -11,16 +11,17 @@ class DishService {
   }
 
   getDishes = () => {
-    return this.api.get<getDishesData>('/all')
+    return this.api.get<GetDishesData>('/all')
   }
 }
 
-type DishData = {
+export type DishData = {
+  _id: string
   restaurant: string
   name: string
   imageUrl: string
 }
 
-type getDishesData = []
+type GetDishesData = DishData[]
 
 export default DishService

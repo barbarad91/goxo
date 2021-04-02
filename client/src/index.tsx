@@ -1,9 +1,9 @@
 import { CssBaseline, ThemeProvider } from '@material-ui/core'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './Components/App'
-import theme from './Components/theme'
-import UserContext from './Pages/LoggedUserContext'
+import App from './components/App'
+import theme from './components/theme'
+import UserContext from './pages/LoggedUserContext'
 
 ReactDOM.render(
   <React.StrictMode>

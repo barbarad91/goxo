@@ -8,7 +8,7 @@ import Container from '@material-ui/core/Container'
 import Link from '@material-ui/core/Link'
 import Grid from '@material-ui/core/Grid'
 import Icon from '@mdi/react'
-import SignUpForm from 'src/Components/SignUpForm'
+import SignUpForm from 'src/components/SignUpForm'
 
 const SignUp = () => {
   const classes = useStyles()
