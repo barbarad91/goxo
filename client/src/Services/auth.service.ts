@@ -30,9 +30,9 @@ type SignInData = {
   password: string
 }
 
-type UserData = { username: string; name: string }
+type UserData = { username: string; name: string; imageUrl: string }
 
-type SignUpData = SignInData & { confirmPassword: string; name: string }
+type SignUpData = SignInData & { confirmPassword: string; name: string; imageUrl?: string }
 
 type SignUpResponse = UserData
 

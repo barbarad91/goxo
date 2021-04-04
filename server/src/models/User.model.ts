@@ -22,6 +22,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  imageUrl: {
+    type: String,
+    default:
+      'https://res.cloudinary.com/dcprb2mtk/image/upload/v1617552129/goxo/blank-profile-picture-973460_1280_prr1he.png',
+  },
 })
 
 export default mongoose.model('User', userSchema)

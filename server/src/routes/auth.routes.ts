@@ -7,7 +7,7 @@ import User from '../models/User.model'
 const router = express.Router()
 
 router.post('/signup', async (req: Request, res: Response) => {
-  const { username, password, confirmPassword, name } = req?.body
+  const { username, password, confirmPassword, name, imageUrl } = req?.body
   if (
     !username ||
     !password ||
@@ -42,6 +42,7 @@ router.post('/signup', async (req: Request, res: Response) => {
           username,
           name,
           password: hashedPassword,
+          imageUrl,
         }
 
         const createdUser = await User.create({ ...newUser })
@@ -77,8 +78,8 @@ router.post('/signin', (req, res, next) => {
 
 router.get('/user', (req, res) => {
   if (req.user) {
-    const { username, name } = req.user as UserInterface
-    res.send({ username, name })
+    const { username, name, imageUrl } = req.user as UserInterface
+    res.send({ username, name, imageUrl })
   } else {
     res.send(undefined)
   }

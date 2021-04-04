@@ -52,6 +52,7 @@ const passportConfig = (app: Express) => {
       const userInformation = {
         username: user.username,
         name: user.name,
+        imageUrl: user.imageUrl,
       }
 
       cb(err, userInformation)

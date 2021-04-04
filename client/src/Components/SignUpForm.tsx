@@ -8,6 +8,7 @@ import { useLoggedUserContext } from 'src/pages/LoggedUserContext'
 import { useHistory } from 'react-router'
 import { Alert } from '@material-ui/lab'
 import { Snackbar } from '@material-ui/core'
+import UploadService from 'src/services/upload.service'
 
 type SignUpFormProps = {
   formClass?: string
@@ -17,6 +18,8 @@ type SignUpFormProps = {
 const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
+  const [imageUrl, setImageUrl] = useState()
+  const [isUploading, setIsUploading] = useState(false)
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [signUpError, setSignUpError] = useState('')
@@ -25,13 +28,36 @@ const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
   const history = useHistory()
 
   const { setUser } = useLoggedUserContext()
+
   const authService = new AuthService()
+  const uploadService = new UploadService()
+
+  const handleFileUpload = async (e: React.ChangeEvent) => {
+    setIsUploading(true)
+
+    const uploadData = new FormData()
+    const target = e.target as HTMLInputElement
+
+    if (target && target.files) {
+      uploadData.append('imageUrl', target.files[0])
+
+      try {
+        const uploadResponse = await uploadService.uploadFile(uploadData)
+
+        setIsUploading(false)
+        setImageUrl(uploadResponse.data.secure_url)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
     setSignUpError('')
     try {
-      const userData = await authService.signUp({ username, name, password, confirmPassword })
+      const userData = await authService.signUp({ username, name, password, confirmPassword, imageUrl })
       setUser(userData.data)
       history.push('/')
     } catch (error) {
@@ -73,6 +99,18 @@ const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
           autoComplete="name"
           autoFocus
           onChange={(e) => setName(e.target.value)}
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          fullWidth
+          id="avatar"
+          label="Avatar Image"
+          name="avatar"
+          type="file"
+          autoComplete="avatar"
+          autoFocus
+          onChange={handleFileUpload}
         />
         <TextField
           variant="outlined"

@@ -5,11 +5,15 @@ import passportConfig from './config/passport.config'
 import corsConfig from './config/cors.config'
 import dbConfig from './config/db.config'
 import routesDefinition from './routes'
+import { cloudinaryConfig } from './config/cloudinary.config'
 
 dotenv.config()
 
 // DB connection
 dbConfig()
+
+// Cloudinary settings
+cloudinaryConfig()
 
 // Middleware
 const app = express()
