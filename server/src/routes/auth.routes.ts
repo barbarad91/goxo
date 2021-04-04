@@ -78,9 +78,8 @@ router.post('/signin', (req, res, next) => {
 
 router.get('/user', (req, res) => {
   if (req.user) {
-    const { username, name, imageUrl } = req.user as UserInterface
-    console.log(req.user)
-    res.send({ username, name, imageUrl })
+    const { _id, username, name, imageUrl } = req.user as UserInterface
+    res.send({ _id, username, name, imageUrl })
   } else {
     res.send(undefined)
   }

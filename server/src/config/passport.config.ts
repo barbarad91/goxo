@@ -50,6 +50,7 @@ const passportConfig = (app: Express) => {
   passport.deserializeUser((id: string, cb) => {
     User.findById(id, (err: Error, user: any) => {
       const userInformation = {
+        _id: user._id,
         username: user.username,
         name: user.name,
         imageUrl: user.imageUrl,

@@ -10,3 +10,9 @@ export type Restaurant = {
   name: string
   address: string
 }
+
+export type Fav = {
+  _id: string
+  dish: string
+  user: string
+}

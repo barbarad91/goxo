@@ -1,15 +1,22 @@
-import { Card, CardContent, CardMedia, makeStyles, Theme, Typography } from '@material-ui/core'
+import { Card, CardActions, CardContent, CardMedia, IconButton, makeStyles, Theme, Typography } from '@material-ui/core'
+import Icon from '@mdi/react'
+import { mdiHeart, mdiHeartOutline } from '@mdi/js'
+
 import { Restaurant } from 'src/types'
 
 type DishCardProps = {
+  _id: string
   imageUrl: string
   name: string
   restaurant: Restaurant
+  isFav: boolean
+  handleFav: (dishId: string) => Promise<void>
   className?: string
 }
 
-const DishCard = ({ name, imageUrl, className, restaurant }: DishCardProps) => {
+const DishCard = ({ _id, name, imageUrl, className, restaurant, isFav, handleFav }: DishCardProps) => {
   const classes = useStyles()
+
   return (
     <Card className={className}>
       <CardMedia component="img" image={imageUrl} alt={name} />
@@ -24,6 +31,11 @@ const DishCard = ({ name, imageUrl, className, restaurant }: DishCardProps) => {
           {restaurant.address}
         </Typography>
       </CardContent>
+      <CardActions>
+        <IconButton aria-label="add to favorites" onClick={() => handleFav(_id)}>
+          <Icon path={isFav ? mdiHeart : mdiHeartOutline} size={1} />
+        </IconButton>
+      </CardActions>
     </Card>
   )
 }
