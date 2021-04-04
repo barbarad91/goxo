@@ -51,7 +51,7 @@ const passportConfig = (app: Express) => {
     User.findById(id, (err: Error, user: any) => {
       const userInformation = {
         username: user.username,
-        isAdmin: user.isAdmin,
+        name: user.name,
       }
 
       cb(err, userInformation)
