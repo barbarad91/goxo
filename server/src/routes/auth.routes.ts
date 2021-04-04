@@ -7,10 +7,16 @@ import User from '../models/User.model'
 const router = express.Router()
 
 router.post('/signup', async (req: Request, res: Response) => {
-  // username, password
-  const { username, password, confirmPassword } = req?.body
-
-  if (!username || !password || typeof username !== 'string' || typeof password !== 'string') {
+  const { username, password, confirmPassword, name } = req?.body
+  console.log(req.body)
+  if (
+    !username ||
+    !password ||
+    !name ||
+    typeof username !== 'string' ||
+    typeof password !== 'string' ||
+    typeof name !== 'string'
+  ) {
     res.status(400).json({ code: 400, message: 'Missing credentials' })
     return
   }
@@ -35,16 +41,16 @@ router.post('/signup', async (req: Request, res: Response) => {
 
         const newUser = {
           username,
+          name,
           password: hashedPassword,
         }
 
         const createdUser = await User.create({ ...newUser })
 
-        //TODO
-        // Rename variable
-        const bb = (createdUser as unknown) as UserInterface
-        res.send({ username: bb.username, isAdmin: bb.isAdmin })
+        const createdUserData = (createdUser as unknown) as UserInterface
+        res.send({ username: createdUserData.username })
       } catch (error) {
+        console.log(error)
         res.status(500).json({ code: 500, message: 'An error ocurred during sign up' })
       }
     }
@@ -63,17 +69,17 @@ router.post('/signin', (req, res, next) => {
       return
     }
 
-    const { username, isAdmin } = theUser
+    const { username } = theUser
     req.login(theUser, (err) =>
-      err ? res.status(500).json({ code: 500, message: 'Session error' }) : res.json({ username, isAdmin })
+      err ? res.status(500).json({ code: 500, message: 'Session error' }) : res.json({ username })
     )
   })(req, res, next)
 })
 
 router.get('/user', (req, res) => {
   if (req.user) {
-    const { username, isAdmin } = req.user as UserInterface
-    res.send({ username, isAdmin })
+    const { username, name } = req.user as UserInterface
+    res.send({ username, name })
   } else {
     res.send(undefined)
   }

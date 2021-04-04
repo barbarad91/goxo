@@ -53,7 +53,7 @@ type LoggedUserContextData = {
 
 type User = {
   username: string
-  isAdmin: boolean
+  name: string
 }
 
 export default UserContext

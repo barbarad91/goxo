@@ -30,14 +30,14 @@ type SignInData = {
   password: string
 }
 
-type UserResponse = { username: string; isAdmin: boolean }
+type UserData = { username: string; name: string }
 
-type SignUpData = SignInData & { confirmPassword: string }
+type SignUpData = SignInData & { confirmPassword: string; name: string }
 
-type SignUpResponse = UserResponse
+type SignUpResponse = UserData
 
-type SignInResponse = UserResponse
+type SignInResponse = UserData
 
-type GetUserResponse = UserResponse | undefined
+type GetUserResponse = UserData | undefined
 
 export default AuthService

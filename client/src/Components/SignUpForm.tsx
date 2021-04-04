@@ -16,6 +16,7 @@ type SignUpFormProps = {
 
 const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
   const [username, setUsername] = useState('')
+  const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [signUpError, setSignUpError] = useState('')
@@ -30,7 +31,7 @@ const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
     e.preventDefault()
     setSignUpError('')
     try {
-      const userData = await authService.signUp({ username, password, confirmPassword })
+      const userData = await authService.signUp({ username, name, password, confirmPassword })
       setUser(userData.data)
       history.push('/')
     } catch (error) {
@@ -59,6 +60,19 @@ const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
           autoComplete="email"
           autoFocus
           onChange={(e) => setUsername(e.target.value)}
+        />
+        <TextField
+          variant="outlined"
+          margin="normal"
+          required
+          fullWidth
+          id="name"
+          label="Name"
+          name="name"
+          type="text"
+          autoComplete="name"
+          autoFocus
+          onChange={(e) => setName(e.target.value)}
         />
         <TextField
           variant="outlined"
