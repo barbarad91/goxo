@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
+import { Dish } from 'src/types'
 
 class DishService {
   api: AxiosInstance
@@ -15,13 +16,6 @@ class DishService {
   }
 }
 
-export type DishData = {
-  _id: string
-  restaurant: string
-  name: string
-  imageUrl: string
-}
-
-type GetDishesData = DishData[]
+type GetDishesData = Dish[]
 
 export default DishService

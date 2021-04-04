@@ -1,13 +1,14 @@
-import { CircularProgress, Grid, makeStyles, Theme } from '@material-ui/core'
+import { Grid, makeStyles, Theme } from '@material-ui/core'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import DishCard from 'src/components/DishCard'
-import DishService, { DishData } from 'src/services/dishes.service'
+import DishService from 'src/services/dishes.service'
 import LoadingScreen from 'src/shared/LoadingScreen'
+import { Dish } from 'src/types'
 
 const Homepage = () => {
   const classes = useStyles()
 
-  const [dishes, setDishes] = useState<DishData[]>([])
+  const [dishes, setDishes] = useState<Dish[]>([])
   const [loading, setLoading] = useState(true)
 
   const dishService = useMemo(() => new DishService(), [])
@@ -34,7 +35,12 @@ const Homepage = () => {
         <Grid container className={classes.rootContainer}>
           {dishes.map((dish) => (
             <Grid item xs={12} sm={6} lg={3} className={classes.gridItem} key={dish._id}>
-              <DishCard className={classes.card} name={dish.name} imageUrl={dish.imageUrl} />
+              <DishCard
+                className={classes.card}
+                name={dish.name}
+                imageUrl={dish.imageUrl}
+                restaurant={dish.restaurant}
+              />
             </Grid>
           ))}
         </Grid>
