@@ -69,9 +69,9 @@ router.post('/signin', (req, res, next) => {
       return
     }
 
-    const { username } = theUser
+    const { _id, username, name, imageUrl } = theUser
     req.login(theUser, (err) =>
-      err ? res.status(500).json({ code: 500, message: 'Session error' }) : res.json({ username })
+      err ? res.status(500).json({ code: 500, message: 'Session error' }) : res.json({ _id, username, name, imageUrl })
     )
   })(req, res, next)
 })

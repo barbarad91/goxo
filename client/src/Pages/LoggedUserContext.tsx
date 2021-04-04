@@ -52,6 +52,7 @@ type LoggedUserContextData = {
 }
 
 type User = {
+  _id: string
   username: string
   name: string
   imageUrl: string
