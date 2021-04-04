@@ -3,7 +3,6 @@ import NavBar from './NavBar'
 import Homepage from '../pages/Homepage'
 import Profile from '../pages/Profile'
 import SignIn from '../pages/SignIn'
-import Copyright from './Copyright'
 import { useLoggedUserContext } from '../pages/LoggedUserContext'
 import SignUp from '../pages/SignUp'
 import LoggedInRoute from './LoggedInRoute'
@@ -28,7 +27,6 @@ function App() {
           <LoggedInRoute path="/profile" component={Profile} />
         </Switch>
       )}
-      <Copyright />
     </BrowserRouter>
   )
 }
