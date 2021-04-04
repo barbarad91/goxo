@@ -77,7 +77,6 @@ const SignInForm = ({ formClass, submitClass }: SignInFormProps) => {
             setSignInError('')
           }}
         />
-        <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
         <Button type="submit" fullWidth variant="contained" color="primary" className={submitClass}>
           Sign In
         </Button>

@@ -140,7 +140,6 @@ const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
           autoComplete="current-password"
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
         {isUploading && (
           <div className={classes.uploading}>
             <CircularProgress size="30px" />
