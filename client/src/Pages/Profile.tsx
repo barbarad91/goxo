@@ -15,6 +15,7 @@ const Profile = () => {
         <Container className={classes.root}>
           <div>{user?.username}</div>
           <div>{user?.name}</div>
+          <img src={user?.imageUrl} alt={user?.name}></img>
         </Container>
       )}
     </>

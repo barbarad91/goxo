@@ -12,6 +12,7 @@ import LoadingScreen from 'src/shared/LoadingScreen'
 
 function App() {
   const { user, loading } = useLoggedUserContext()
+  console.log(user)
   return (
     <BrowserRouter>
       <NavBar />

@@ -54,6 +54,7 @@ type LoggedUserContextData = {
 type User = {
   username: string
   name: string
+  imageUrl: string
 }
 
 export default UserContext

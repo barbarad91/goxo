@@ -7,7 +7,7 @@ import AuthService from 'src/services/auth.service'
 import { useLoggedUserContext } from 'src/pages/LoggedUserContext'
 import { useHistory } from 'react-router'
 import { Alert } from '@material-ui/lab'
-import { Snackbar } from '@material-ui/core'
+import { CircularProgress, makeStyles, Snackbar, Theme, Typography } from '@material-ui/core'
 import UploadService from 'src/services/upload.service'
 
 type SignUpFormProps = {
@@ -16,6 +16,8 @@ type SignUpFormProps = {
 }
 
 const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
+  const classes = useStyles()
+
   const [username, setUsername] = useState('')
   const [name, setName] = useState('')
   const [imageUrl, setImageUrl] = useState()
@@ -100,6 +102,7 @@ const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
           autoFocus
           onChange={(e) => setName(e.target.value)}
         />
+
         <TextField
           variant="outlined"
           margin="normal"
@@ -112,6 +115,7 @@ const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
           autoFocus
           onChange={handleFileUpload}
         />
+
         <TextField
           variant="outlined"
           margin="normal"
@@ -137,12 +141,31 @@ const SignUpForm = ({ formClass, submitClass }: SignUpFormProps) => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
-        <Button type="submit" fullWidth variant="contained" color="primary" className={submitClass}>
+        {isUploading && (
+          <div className={classes.uploading}>
+            <CircularProgress size="30px" />
+          </div>
+        )}
+        <Button
+          disabled={isUploading}
+          type="submit"
+          fullWidth
+          variant="contained"
+          color="primary"
+          className={submitClass}
+        >
           Sign Up
         </Button>
       </form>
     </>
   )
 }
+
+const useStyles = makeStyles(({ spacing }: Theme) => ({
+  uploading: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+}))
 
 export default SignUpForm
