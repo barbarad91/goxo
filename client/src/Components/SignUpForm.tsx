@@ -7,7 +7,7 @@ import AuthService from 'src/services/auth.service'
 import { useLoggedUserContext } from 'src/pages/LoggedUserContext'
 import { useHistory } from 'react-router'
 import { Alert } from '@material-ui/lab'
-import { CircularProgress, makeStyles, Snackbar, Theme, Typography } from '@material-ui/core'
+import { CircularProgress, makeStyles, Snackbar, Theme } from '@material-ui/core'
 import UploadService from 'src/services/upload.service'
 
 type SignUpFormProps = {
