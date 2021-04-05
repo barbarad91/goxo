@@ -7,7 +7,7 @@ import { mdiAccount, mdiLogoutVariant } from '@mdi/js'
 import { Link } from 'react-router-dom'
 import { useLoggedUserContext } from 'src/pages/LoggedUserContext'
 import AuthService from '../services/auth.service'
-import { IconButton } from '@material-ui/core'
+import { Button, IconButton } from '@material-ui/core'
 
 const NavBar = () => {
   const classes = useStyles()
@@ -28,7 +28,7 @@ const NavBar = () => {
           <Typography variant="h6" className={classes.title} component={Link} to="/">
             Goxo
           </Typography>
-          {user && (
+          {user ? (
             <>
               <Link to="/profile" className={classes.linkIcon}>
                 <Icon path={mdiAccount} size={1}></Icon>
@@ -37,6 +37,10 @@ const NavBar = () => {
                 <Icon path={mdiLogoutVariant} size={1} />
               </IconButton>
             </>
+          ) : (
+            <Button component={Link} to="/signin" variant="contained" color="primary">
+              Sign in
+            </Button>
           )}
         </Toolbar>
       </AppBar>

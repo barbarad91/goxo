@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import NavBar from './NavBar'
 import Homepage from '../pages/Homepage'
 import Profile from '../pages/Profile'
@@ -20,7 +20,7 @@ function App() {
       ) : (
         <Switch>
           <Route path="/" exact>
-            {user ? <Homepage /> : <Redirect to="signin" />}
+            <Homepage />
           </Route>
           <LoggedOutRoute path="/signin" component={SignIn} />
           <LoggedOutRoute path="/signup" component={SignUp} />
