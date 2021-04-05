@@ -48,7 +48,13 @@ router.post('/signup', async (req: Request, res: Response) => {
         const createdUser = await User.create({ ...newUser })
 
         const createdUserData = (createdUser as unknown) as UserInterface
-        res.send({ username: createdUserData.username })
+        const sendCreatedUserData = {
+          _id: createdUserData._id,
+          username: createdUserData.username,
+          name: createdUserData.name,
+          imageUrl: createdUserData.imageUrl,
+        }
+        res.send({ ...sendCreatedUserData })
       } catch (error) {
         console.log(error)
         res.status(500).json({ code: 500, message: 'An error ocurred during sign up' })
