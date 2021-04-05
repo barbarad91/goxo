@@ -3,6 +3,7 @@ import Icon from '@mdi/react'
 import { mdiHeart, mdiHeartOutline } from '@mdi/js'
 
 import { Restaurant } from 'src/types'
+import { useLoggedUserContext } from 'src/pages/LoggedUserContext'
 
 type DishCardProps = {
   _id: string
@@ -15,6 +16,8 @@ type DishCardProps = {
 }
 
 const DishCard = ({ _id, name, imageUrl, className, restaurant, isFav, handleFav }: DishCardProps) => {
+  const { user } = useLoggedUserContext()
+
   const classes = useStyles()
 
   return (
@@ -31,11 +34,13 @@ const DishCard = ({ _id, name, imageUrl, className, restaurant, isFav, handleFav
           {restaurant.address}
         </Typography>
       </CardContent>
-      <CardActions>
-        <IconButton aria-label="add to favorites" onClick={() => handleFav(_id)}>
-          <Icon path={isFav ? mdiHeart : mdiHeartOutline} size={1} className={classes.favIcon} />
-        </IconButton>
-      </CardActions>
+      {user && (
+        <CardActions>
+          <IconButton aria-label="add to favorites" onClick={() => handleFav(_id)}>
+            <Icon path={isFav ? mdiHeart : mdiHeartOutline} size={1} className={classes.favIcon} />
+          </IconButton>
+        </CardActions>
+      )}
     </Card>
   )
 }
