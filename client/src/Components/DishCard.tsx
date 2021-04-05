@@ -19,8 +19,8 @@ const DishCard = ({ _id, name, imageUrl, className, restaurant, isFav, handleFav
 
   return (
     <Card className={className}>
-      <CardMedia component="img" image={imageUrl} alt={name} />
-      <CardContent>
+      <CardMedia component="img" image={imageUrl} alt={name} className={classes.cardImage} />
+      <CardContent className={classes.cardContent}>
         <Typography gutterBottom variant="h6" component="h2" className={classes.restaurantName}>
           {restaurant.name}
         </Typography>
@@ -33,7 +33,7 @@ const DishCard = ({ _id, name, imageUrl, className, restaurant, isFav, handleFav
       </CardContent>
       <CardActions>
         <IconButton aria-label="add to favorites" onClick={() => handleFav(_id)}>
-          <Icon path={isFav ? mdiHeart : mdiHeartOutline} size={1} />
+          <Icon path={isFav ? mdiHeart : mdiHeartOutline} size={1} className={classes.favIcon} />
         </IconButton>
       </CardActions>
     </Card>
@@ -41,6 +41,13 @@ const DishCard = ({ _id, name, imageUrl, className, restaurant, isFav, handleFav
 }
 
 const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
+  cardImage: {
+    height: spacing(25),
+    objectFit: 'cover',
+  },
+  cardContent: {
+    height: spacing(20),
+  },
   restaurantName: {
     textTransform: 'uppercase',
     color: palette.primary.main,
@@ -48,6 +55,9 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) => ({
   },
   restaurantAddress: {
     fontSize: spacing(1.5),
+  },
+  favIcon: {
+    color: palette.primary.main,
   },
 }))
 export default DishCard
