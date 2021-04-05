@@ -12,31 +12,31 @@ router.get('/userfavs/:userId', async (req, res) => {
   }
 })
 
-router.post('/:dishId/:userId', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
-    const dishFav = await Fav.findOne({ dish: req.params.dishId, user: req.params.userId })
+    const dishFav = await Fav.findOne({ dish: req.body.dishId, user: req.body.userId })
 
     if (dishFav) {
       res.json(dishFav)
       return
     }
 
-    const newFav = await Fav.create({ dish: req.params.dishId, user: req.params.userId })
+    const newFav = await Fav.create({ dish: req.body.dishId, user: req.body.userId })
     res.json(newFav)
   } catch (error) {
     console.log(error)
   }
 })
 
-router.delete('/:dishId/:userId', async (req, res) => {
+router.delete('/', async (req, res) => {
   try {
-    const dishFav = await Fav.findOne({ dish: req.params.dishId, user: req.params.userId })
+    const dishFav = await Fav.findOne({ dish: req.body.dishId, user: req.body.userId })
 
     if (!dishFav) {
       return
     }
 
-    const deletedFav = await Fav.deleteOne({ dish: req.params.dishId, user: req.params.userId })
+    const deletedFav = await Fav.deleteOne({ dish: req.body.dishId, user: req.body.userId })
     res.json(deletedFav)
   } catch (error) {
     console.log(error)

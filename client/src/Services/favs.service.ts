@@ -16,11 +16,11 @@ class FavService {
   }
 
   newFav = ({ dishId, userId }: FavRequest) => {
-    return this.api.post(`/${dishId}/${userId}`)
+    return this.api.post('/', { dishId, userId })
   }
 
   deleteFav = ({ dishId, userId }: FavRequest) => {
-    return this.api.delete(`/${dishId}/${userId}`)
+    return this.api.delete('/', { data: { dishId, userId } })
   }
 }
 
