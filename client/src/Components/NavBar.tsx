@@ -25,9 +25,9 @@ const NavBar = () => {
     <div className={classes.root}>
       <AppBar className={classes.appBar}>
         <Toolbar className={classes.toolbar}>
-          <Typography variant="h6" className={classes.title} component={Link} to="/">
-            Goxo
-          </Typography>
+          <Link to="/" className={classes.logoLink}>
+            <img src="/logo.png" alt="logo" className={classes.logoImage} />
+          </Link>
           {user ? (
             <>
               <Link to="/profile" className={classes.linkIcon}>
@@ -60,11 +60,10 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
       position: 'fixed',
       backgroundColor: palette.secondary.main,
     },
-    title: {
+    logoLink: {
       flexGrow: 1,
-      textDecoration: 'none',
-      color: 'inherit',
     },
+    logoImage: { width: spacing(5) },
     linkIcon: {
       color: 'inherit',
     },
