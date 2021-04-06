@@ -47,7 +47,7 @@ npm install
 
 Create a .env file inside the server directory and declare the environment variables needed for this project:
 
-DOMAIN=http://localhost:3000
+DOMAIN=http://<span></span>localhost:3000
 
 MONGODB_URI=mongodb://localhost/goxo
 
@@ -62,6 +62,8 @@ CLOUDINARY_KEY=\<your-cloudinary-key\>
 CLOUDINARY_SECRET=\<your-cloudinary-secret\>
 
 The cloudinary variables are needed for uploading user images. If you don't want to upload images, give this variables any value.
+
+You can pick any name for the database instead of goxo, just make sure that it is the same name as the one used in the seeds.ts file.
 
 ### Db seeding
 
