@@ -2,7 +2,7 @@
 
 ## Challenge description
 
-Web app with a login form which data must be accessible for the user
+Web app with a login form whose data must be accessible for the user
 
 ## Solution
 
@@ -20,7 +20,7 @@ The user is saved in a React Context.
 
 ### Sign up form
 
-An email, a name and a picture (optional) is requested, as well as a password, which must be introduced twice.
+An email, a name and a picture (optional) are requested, as well as a password, which must be introduced twice.
 
 ### Sign in form
 
