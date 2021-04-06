@@ -43,6 +43,49 @@ cd ../server
 npm install
 ```
 
+### Environment variables
+
+Create a .env file inside the server directory and declare the environment variables needed for this project:
+
+DOMAIN=http://localhost:3000
+
+MONGODB_URI=mongodb://localhost/goxo
+
+SESSION_SECRET=\<your-session-secret\>
+
+PORT=5000
+
+CLOUDINARY_NAME=\<your-cloudinary-name\>
+
+CLOUDINARY_KEY=\<your-cloudinary-key\>
+
+CLOUDINARY_SECRET=\<your-cloudinary-secret\>
+
+The cloudinary variables are needed for uploading user images. If you don't want to upload images, give this variables any value.
+
+### Db seeding
+
+This project uses a MongoDB database.
+
+In server/src/bin there is a seeds.ts for seeding your local database.
+
+Open a terminal, go to root directory of the project and execute:
+
+```bash
+npm run seed
+npm install
+```
+
+This will seed the DB with the Restaurants. Then, open the seeds.ts, comment the Restaurants part and uncomment the Dishes part.
+Seed the database again by running:
+
+```bash
+npm run seed
+npm install
+```
+
+The dishes will also be seeded.
+
 ## Usage
 
 Open two terminals (one for the server side and another one for the client side)
