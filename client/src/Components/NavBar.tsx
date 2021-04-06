@@ -29,10 +29,10 @@ const NavBar = () => {
           </Link>
           {user ? (
             <>
-              <Link to="/profile" className={classes.linkIcon}>
+              <Link to="/profile" className={classes.profileLinkIcon}>
                 <Icon path={mdiAccount} size={1}></Icon>
               </Link>
-              <IconButton onClick={signOut} className={classes.linkIcon}>
+              <IconButton onClick={signOut} className={classes.signOutLinkIcon}>
                 <Icon path={mdiLogoutVariant} size={1} />
               </IconButton>
             </>
@@ -54,6 +54,7 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
     },
     toolbar: {
       paddingRight: spacing(3),
+      alignItems: 'baseline',
     },
     appBar: {
       position: 'fixed',
@@ -61,10 +62,16 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
     },
     logoLink: {
       flexGrow: 1,
+      margin: 'auto',
     },
     logoImage: { width: spacing(5) },
-    linkIcon: {
+    profileLinkIcon: {
       color: 'inherit',
+      margin: 'auto',
+    },
+    signOutLinkIcon: {
+      color: 'inherit',
+      margin: 'auto',
     },
   })
 )
