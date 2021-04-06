@@ -8,9 +8,13 @@ Web app with a login form which data must be accessible for the user
 
 ### Homepage
 
-The homepage presents available dishes. Data is fetched from a remote Mongo database. Dish images are hosted in Cloudinary.
+The homepage presents available dishes. Data is fetched from a Mongo database. Dish images are hosted in Cloudinary.
+
+<img src="client/public/Homepage.png">
 
 If the user is logged in, a favorite icon will be displayed for every dish. User can click on this icon to add or remove dish from favorites.
+
+<img src="client/public/User-homepage.png">
 
 The user is saved in a React Context.
 
@@ -25,6 +29,8 @@ Only the email and password are required.
 ## Profile page
 
 Here the user can access their data from the sign up form (except for the password)
+
+<img src="client/public/Profile.png">
 
 ## Install
 
@@ -45,6 +51,7 @@ Open two terminals (one for the server side and another one for the client side)
 
 ```bash
 cd server
+npm build
 npm start
 ```
 
