@@ -37,7 +37,7 @@ const NavBar = () => {
               </IconButton>
             </>
           ) : (
-            <Button component={Link} to="/signin" variant="contained" color="primary">
+            <Button component={Link} to="/signin" variant="contained" color="primary" className={classes.signInButton}>
               Sign in
             </Button>
           )}
@@ -72,6 +72,9 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
     signOutLinkIcon: {
       color: 'inherit',
       margin: 'auto',
+    },
+    signInButton: {
+      alignSelf: 'center',
     },
   })
 )
